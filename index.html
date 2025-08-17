@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>MNIST Digit Recognizer</title>
+<style>
+  canvas { 
+    border: 1px solid black; 
+    image-rendering: pixelated;
+    cursor: crosshair;
+  }
+  button { margin-top: 10px; }
+</style>
+</head>
+<body>
+<h2>Draw a digit (0-9)</h2>
+<canvas id="canvas" width="280" height="280"></canvas>
+<br>
+<button onclick="clearCanvas()">Clear</button>
+<button onclick="predict()">Predict</button>
+<h3 id="result"></h3>
+
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+<script src="script.js"></script>
+</body>
+</html>
