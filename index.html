@@ -2,25 +2,124 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MNIST Digit Recognizer</title>
+<!-- Import a nice font from Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 <style>
-  canvas { 
-    border: 1px solid black; 
-    image-rendering: pixelated;
-    cursor: crosshair;
+  /* --- General Body & Layout --- */
+  body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f2f5; /* A soft, light gray background */
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
   }
-  button { margin-top: 10px; }
+
+  /* --- Main Application Container --- */
+  .container {
+    background-color: #ffffff;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+  }
+
+  /* --- Typography --- */
+  h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #1a202c;
+    margin-bottom: 20px;
+  }
+
+  h3#result {
+    font-size: 1.5rem;
+    color: #2c5282; /* A deep blue for the result text */
+    margin-top: 25px;
+    min-height: 2.2rem; /* Prevents layout shift when text appears */
+    font-weight: 400;
+  }
+  
+  /* Give the predicted number a bolder look */
+  h3#result span {
+    font-weight: 600;
+  }
+
+  /* --- Interactive Elements --- */
+  canvas { 
+    border: 2px dashed #d1d5db; /* A softer, dashed border */
+    border-radius: 8px;
+    background-color: #fafafa;
+    cursor: crosshair;
+    image-rendering: pixelated; /* Keeps pixels sharp when scaled */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  canvas:hover {
+    border-color: #4a90e2; /* Highlight border on hover */
+    box-shadow: 0 0 10px rgba(74, 144, 226, 0.2);
+  }
+
+  .button-container {
+    display: flex;
+    gap: 15px; /* Space between buttons */
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  button {
+    background-color: #4a90e2; /* A friendly, modern blue */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+
+  button:hover {
+    background-color: #357abd; /* A slightly darker blue for hover */
+    transform: translateY(-2px); /* Subtle lift effect */
+  }
+
+  /* A different style for the "Clear" button to distinguish it */
+  button.secondary {
+    background-color: #e2e8f0;
+    color: #4a5568;
+  }
+
+  button.secondary:hover {
+    background-color: #cbd5e0;
+  }
+
 </style>
 </head>
 <body>
-<h2>Draw a digit (0-9)</h2>
-<canvas id="canvas" width="280" height="280"></canvas>
-<br>
-<button onclick="clearCanvas()">Clear</button>
-<button onclick="predict()">Predict</button>
-<h3 id="result"></h3>
+
+<div class="container">
+  <h2>Draw a digit (0-9)</h2>
+  <canvas id="canvas" width="280" height="280"></canvas>
+  <div class="button-container">
+    <button class="secondary" onclick="clearCanvas()">Clear</button>
+    <button onclick="predict()">Predict</button>
+  </div>
+  <h3 id="result"></h3>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
-<script src="script.js"></script>
+<!-- Make sure your script.js can handle the new result format if you change it -->
+<script src = "script.js"></script>
+
 </body>
 </html>
